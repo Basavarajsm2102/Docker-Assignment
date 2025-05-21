@@ -1,0 +1,12 @@
+name: Detect Nginx Error Logs
+type: any
+index: filebeat-*
+filter:
+- query:
+    query_string:
+      query: "message: *error*"
+alert:
+- "email"
+email:
+- "admin@example.com"
+smtp_host: "localhost"
